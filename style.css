@@ -1,0 +1,33 @@
+.parisienne-regular {
+  font-family: "Parisienne", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.navbar-brand {
+  transform: scale(2) translateX(27%) translateY(5%);
+}
+
+.navbar {
+  background: radial-gradient(ellipse at top left, indigo, black);
+}
+
+.year-container {
+  border-radius: 1rem;
+  box-shadow: 5px 5px 10px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s;
+}
+
+.year-container span {
+  font-family: sans-serif;
+  padding: 5rem 0;
+  font-size: 5rem;
+  font-weight: 800;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  color: #ffffff;
+  text-shadow: 6px 6px 0 black;
+}
