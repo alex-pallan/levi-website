@@ -8,12 +8,15 @@
   border-right: 1px solid lightgray;
 }
 
+body {
+  background: radial-gradient(ellipse at center right, #683d1a, #cfb585);
+}
+
 .hero {
   width: 100%;
   height: 100vh;
   overflow: hidden;
   position: relative;
-  background: radial-gradient(ellipse at bottom right, #683d1a, #cfb585);
 }
 
 .hero-levi-headshot {
