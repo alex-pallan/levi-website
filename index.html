@@ -55,33 +55,44 @@
     <div class="container">
       <h2>Image Gallery</h2>
       <hr />
-      <div class="row mt-4" data-masonry='{"percentPosition": true }'>
-        <div class="col-sm-6 col-lg-4 mb-4">
-          <div class="card">
-            <img
-              src="assets/images/gallery/52063472742_dc4e5979ae_o.jpg"
-              class="card-img"
-            />
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-4 mb-4">
-          <div class="card">
-            <img
-              src="assets/images/gallery/52063472997_9cec852355_o.jpg"
-              class="card-img"
-            />
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-4 mb-4">
-          <div class="card">
-            <img
-              src="assets/images/gallery/52064531308_de5cef1ebb_o.jpg"
-              class="card-img"
-            />
-          </div>
-        </div>
+      <div
+        class="row my-4"
+        data-masonry='{"percentPosition": true }'
+        id="gallery"
+      >
+        <!-- Images will be dynamically inserted here -->
       </div>
     </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("assets/images/gallery/gallery.json")
+          .then((response) => response.json())
+          .then((images) => {
+            const gallery = document.getElementById("gallery");
+            images.forEach((image) => {
+              const colDiv = document.createElement("div");
+              colDiv.className = "col-sm-6 col-lg-4 mb-4";
+
+              const cardDiv = document.createElement("div");
+              cardDiv.className = "card";
+
+              const imgElement = document.createElement("img");
+              imgElement.className = "card-img";
+              imgElement.src = `assets/images/gallery/${image}`;
+
+              cardDiv.appendChild(imgElement);
+              colDiv.appendChild(cardDiv);
+              gallery.appendChild(colDiv);
+            });
+
+            // Initialize Masonry layout
+            const msnry = new Masonry(gallery, {
+              percentPosition: true,
+            });
+          })
+          .catch((error) => console.error("Error loading images:", error));
+      });
+    </script>
     <script
       src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
       integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D"
